@@ -33,6 +33,9 @@ namespace KiloLang
             else if(this->isValidCharForWord()) {
                 tokens.push_back(this->makeWordToken());
             }
+            else if(isnumber(this->currentChar)) {
+                 tokens.push_back(this->makeNumberToken());
+            }
             else if(this->currentChar == '(') {
                 tokens.push_back(Token(TokenType::LPAREN));
                 this->advance();
@@ -43,6 +46,26 @@ namespace KiloLang
             }
             else if(this->currentChar == ':') {
                 tokens.push_back(Token(TokenType::COLON));
+                this->advance();
+            }
+            else if(this->currentChar == '=') {
+                tokens.push_back(Token(TokenType::EQ));
+                this->advance();
+            }
+            else if(this->currentChar == '+') {
+                tokens.push_back(Token(TokenType::PLUS));
+                this->advance();
+            }
+            else if(this->currentChar == '-') {
+                tokens.push_back(Token(TokenType::MINUS));
+                this->advance();
+            }
+            else if(this->currentChar == '*') {
+                tokens.push_back(Token(TokenType::MUL));
+                this->advance();
+            }
+            else if(this->currentChar == '/') {
+                tokens.push_back(Token(TokenType::DIV));
                 this->advance();
             }
             else if(this->isEOL()) {
@@ -79,6 +102,26 @@ namespace KiloLang
         }
         return Token(TokenType::IDENTIFIER, word);
 
+    }
+
+    Token Lexer::makeNumberToken()
+    {
+        std::string num;
+        bool hasDecimal = false;
+        bool isValid = true;
+        while((isnumber(this->currentChar) || this->currentChar == '.') && isValid) {
+            if(this->currentChar == '.') {
+                if(hasDecimal) {
+                    isValid = false;
+                } else {
+                    hasDecimal = true;
+                }
+            } 
+            num += this->currentChar;
+            this->advance();
+        }
+        
+        return Token(TokenType::NUMBER, num);
     }
 
     bool Lexer::isWhitespace()

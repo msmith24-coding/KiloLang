@@ -7,9 +7,9 @@ namespace KiloLang
 {
     enum class TokenType
     {
-        KEYWORD, IDENTIFIER, 
-        LPAREN, RPAREN,
-        COLON,
+        KEYWORD, IDENTIFIER, NUMBER,
+        LPAREN, RPAREN, COLON,
+        EQ, PLUS, MINUS, MUL, DIV,
         EOL, END
     };
 

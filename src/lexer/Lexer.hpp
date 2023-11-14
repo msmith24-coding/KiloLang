@@ -15,8 +15,8 @@ namespace KiloLang
     };
 
     const std::string keywords[] = {
-        "func",
-        "end"
+        "func", "end",
+        "let", "define"
     };
 
     class Lexer /* Singleton */
@@ -30,6 +30,7 @@ namespace KiloLang
             LexResult makeTokens();
 
             Token makeWordToken();
+            Token makeNumberToken();
 
             bool isWhitespace();
             bool isValidCharForWord();

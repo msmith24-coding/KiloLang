@@ -25,6 +25,9 @@ int main(int argc, char* argv[])
         LexResult lexResult;
         lexResult = lex.makeTokens();
 
+        std::cout << "--------------" << std::endl;
+        std::cout << "  Lex Result  " << std::endl;
+
         std::cout << "[" << std::endl;
 
         for(unsigned int i = 0; i < lexResult.tokens.size(); ++i) {
