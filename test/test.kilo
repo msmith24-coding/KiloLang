@@ -1,0 +1,8 @@
+func _main():
+    # Define constants.
+    define a = 6;
+    define b = 2;
+
+    # Do calculations.
+    let c = a + b;
+end

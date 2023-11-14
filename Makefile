@@ -33,7 +33,7 @@ endif
 
 # Actions:
 
-.PHONY: all clean
+.PHONY: all clean test
 
 all: $(OUT)
 
@@ -51,3 +51,6 @@ $(OBJ_DIR):
 
 clean:
 	$(RM_CMD) $(OBJ_DIR) $(OUT)
+
+test: 
+	./kilo ./test/basic_ints.kilo
