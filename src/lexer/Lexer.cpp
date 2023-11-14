@@ -33,7 +33,7 @@ namespace KiloLang
             else if(this->isValidCharForWord()) {
                 tokens.push_back(this->makeWordToken());
             }
-            else if(isnumber(this->currentChar)) {
+            else if(isdigit(this->currentChar)) {
                  tokens.push_back(this->makeNumberToken());
             }
             else if(this->currentChar == '(') {
@@ -109,7 +109,7 @@ namespace KiloLang
         std::string num;
         bool hasDecimal = false;
         bool isValid = true;
-        while((isnumber(this->currentChar) || this->currentChar == '.') && isValid) {
+        while((isdigit(this->currentChar) || this->currentChar == '.') && isValid) {
             if(this->currentChar == '.') {
                 if(hasDecimal) {
                     isValid = false;
